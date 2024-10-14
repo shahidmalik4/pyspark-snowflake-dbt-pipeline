@@ -6,9 +6,9 @@ import plotly.express as px
 # Function to connect to Snowflake
 def get_snowflake_connection():
     return connect(
-        user='shahid',          # Replace with your Snowflake username
-        password='adminproxy1S$',  # Replace with your Snowflake password
-        account='ksb58116.us-east-1',    # Replace with your Snowflake account
+        user='<username>',          # Replace with your Snowflake username
+        password='<password>',  # Replace with your Snowflake password
+        account='<account_url>',    # Replace with your Snowflake account
         warehouse='PROJECT_WH',# Replace with your Snowflake warehouse
         database='ANALYTICS',  # Replace with your Snowflake database
         schema='REPORT_SCHEMA' # Replace with your Snowflake schema
