@@ -19,11 +19,9 @@ The pipeline extracts large datasets from Snowflake, processes them using PySpar
 - [Features](#features)
 - [Architecture](#architecture)
 - [Tech Stack](#tech-stack)
-- [Installation](#installation)
 - [Pipeline Workflow](#pipeline-workflow)
 - [Usage](#usage)
 - [Streamlit Visualization](#streamlit-visualization)
-- [License](#license)
 
 ## Features
 
@@ -54,3 +52,58 @@ graph TD;
 - **Airflow**: To orchestrate and automate the entire ETL workflow, ensuring tasks are scheduled and dependencies are handled seamlessly.
 - **dbt (Data Build Tool)**: To manage SQL-based data transformations and create analytics models in a modular way using version-controlled code.
 - **Streamlit**: For interactive web-based visualization, allowing users to explore and analyze the data in real time through a simple and intuitive interface.
+
+
+## Pipeline Workflow
+
+The pipeline consists of several key components that work together to facilitate efficient data processing. 
+
+1. **Data Extraction**: PySpark extracts data from multiple source tables in Snowflake. 
+2. **Data Transformation**: The extracted data undergoes transformations using modular PySpark scripts, ensuring the data is clean and structured for analysis.
+3. **Loading into Snowflake**: Transformed data is loaded back into Snowflake for storage and further processing.
+4. **Analytics with dbt**: dbt models are used to create analytics tables and enable seamless querying of the transformed data.
+5. **Orchestration**: Apache Airflow manages and schedules the entire workflow, ensuring that each step is executed in the correct sequence and monitoring for any failures.
+6. **Visualization**: Finally, Streamlit provides an interactive dashboard for visualizing the data, allowing users to gain insights and make data-driven decisions.
+
+
+## Usage
+
+To interact with the ETL pipeline and visualization components of this project, use the following commands:
+
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/shahidmalik4/pyspark-snowflake-dbt-pipeline.git
+   cd project_directory
+   ```
+
+2. **Set Up the Environment**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Start Airflow Services**:
+   ```bash
+   airflow scheduler &
+   airflow webserver -p 8080
+   ```
+
+4. **Run dbt Transformations**:
+   ```bash
+   dbt run
+   ```
+
+5. **Start the Streamlit App**:
+   ```bash
+   streamlit run app.py
+   ```
+
+## Streamlit Visualization
+
+The project includes a Streamlit application for interactive data visualization. To access the visualization dashboard, follow these steps:
+
+1. **Launch the Streamlit App**: Navigate to the project directory and start the Streamlit server.
+   ```bash
+   streamlit run app.py
+  ```
+
