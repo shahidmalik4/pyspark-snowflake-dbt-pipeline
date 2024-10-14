@@ -10,26 +10,26 @@ from transformations import (
 spark = SparkSession.builder \
     .appName("PySpark Snowflake DBT ETL") \
     .config("spark.jars.packages", "net.snowflake:snowflake-jdbc:3.13.14,net.snowflake:spark-snowflake_2.12:2.10.0-spark_3.0") \
-    .config("spark.executor.extraClassPath", "/home/cipher/pyspark_files/snowflake-jdbc-3.13.14.jar:/home/cipher/pyspark_files/spark-snowflake_2.12-2.10.0-spark_3.0.jar") \
+    .config("spark.executor.extraClassPath", "<path_to_jar_files>/snowflake-jdbc-3.13.14.jar:<path_to_jar_files>/spark-snowflake_2.12-2.10.0-spark_3.0.jar") \
     .config("spark.executor.memory", "4g") \
     .getOrCreate()
 
 # Snowflake Source options
 sf_source_options = {
-    "sfURL": "https://ksb58116.us-east-1.snowflakecomputing.com",
-    "sfUser": "cipher",
-    "sfPassword": "adminproxy1S$",
+    "sfURL": "<ACCOUNT_URL>",
+    "sfUser": "<USERNAME>",
+    "sfPassword": "<PASSWORD>",
     "sfDatabase": "SNOWFLAKE_SAMPLE_DATA",
     "sfSchema": "TPCH_SF1",
-    "sfWarehouse": "COMPUTE_WH",
+    "sfWarehouse": "COMPUTE_",
     "sfRole": "ACCOUNTADMIN"
 }
 
 # Snowflake Source options
 sf_dest_options = {
-    "sfURL": "https://ksb58116.us-east-1.snowflakecomputing.com",
-    "sfUser": "shahid",
-    "sfPassword": "adminproxy1S$",
+    "sfURL": "<ACCOUNT_URL>",
+    "sfUser": "<USERNAME>",
+    "sfPassword": "<PASSWORD>",
     "sfDatabase": "ANALYTICS",
     "sfSchema": "TRANSFORM_SCHEMA",
     "sfWarehouse": "PROJECT_WH",
@@ -49,14 +49,14 @@ table_transformations = {
 }
 
 table_limits = {
-    "SUPPLIER": 40,
-    "NATION": 5,
+    "SUPPLIER": 100,
+    "NATION": 150,
     "REGION": 5,
-    "CUSTOMER": 100,
-    "PART": 200,
-    "PARTSUPP": 80,
-    "LINEITEM": 1000,
-    "ORDERS": 400
+    "CUSTOMER": 100000,
+    "PART": 1500000,
+    "PARTSUPP": 800000,
+    "LINEITEM": 5000000,
+    "ORDERS": 2700000
 }
 
 # Loop through each table, extract data, apply the corresponding transformation, and load it back to Snowflake
