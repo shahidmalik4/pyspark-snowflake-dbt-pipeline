@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: transform
+    database: ANALYTICS
+    schema: TRANSFORM_SCHEMA
+    tables:
+      - name: customer_transformed
+      - name: lineitem_transformed
+      - name: nation_transformed
+      - name: orders_transformed
+      - name: part_transformed
+      - name: partsupp_transformed
+      - name: region_transformed
+      - name: supplier_transformed

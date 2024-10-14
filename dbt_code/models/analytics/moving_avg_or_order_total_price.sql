@@ -1,0 +1,6 @@
+SELECT
+    o.ORDER_DATE,
+    o.TOTAL_PRICE,
+    AVG(o.TOTAL_PRICE) OVER (ORDER BY o.ORDER_DATE ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_avg_total_price
+FROM {{ ref('fact_orders') }} o
+ORDER BY o.ORDER_DATE
