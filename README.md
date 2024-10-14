@@ -105,5 +105,6 @@ The project includes a Streamlit application for interactive data visualization.
 1. **Launch the Streamlit App**: Navigate to the project directory and start the Streamlit server.
    ```bash
    streamlit run app.py
-  ```
+   ```
+
 
