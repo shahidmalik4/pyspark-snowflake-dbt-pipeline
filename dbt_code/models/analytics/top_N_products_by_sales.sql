@@ -13,4 +13,4 @@ SELECT
     product_rank
 FROM ranked_products
 WHERE product_rank <= 10
-ORDER BY total_sales DESC;
+ORDER BY total_sales DESC
