@@ -1,5 +1,6 @@
 from airflow import DAG
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
+from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
 from datetime import timedelta
 
@@ -36,3 +37,13 @@ spark_submit_task = SparkSubmitOperator(
     conf={'spark.master': 'local[*]'},
     dag=dag
 )
+
+# Task 2: Run dbt models
+dbt_run = BashOperator(
+    task_id='run_dbt_models',
+    bash_command='cd <path_to_dbt_project_directory>/dbt_test && dbt run',
+    dag=dag,
+)
+
+# Define dependencies: First run Spark, then run dbt
+spark_submit_task >> dbt_run  # Spark runs before dbt models
